@@ -7,6 +7,12 @@ export type FormField = {
   required: boolean;
 };
 
+type CartSummaryItem = {
+  name: string;
+  quantity: number;
+  price: number;
+};
+
 export const whatsappConfig = {
   phoneNumber: '34600000000',
 
@@ -44,7 +50,7 @@ export const whatsappConfig = {
   generateMessage: (
     orderId: string, 
     formData: Record<string, string>, 
-    cartItems: any[], 
+    cartItems: CartSummaryItem[],
     total: number
   ) => {
     let message = `🛒 *NUEVO PEDIDO | ${orderId}*\n\n`;

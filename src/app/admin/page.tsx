@@ -34,13 +34,13 @@ export default function AdminDashboard() {
       } else {
         setMessage('❌ Error al guardar');
       }
-    } catch (err) {
+    } catch {
       setMessage('❌ Error de red');
     }
     setIsSaving(false);
   };
 
-  const handleChange = (index: number, field: keyof Product, value: any) => {
+  const handleChange = <K extends keyof Product>(index: number, field: K, value: Product[K]) => {
     const updated = [...productList];
     updated[index] = { ...updated[index], [field]: value };
     setProductList(updated);
@@ -159,7 +159,7 @@ export default function AdminDashboard() {
                   <td style={{ padding: '15px' }}>
                     <select 
                       value={product.category} 
-                      onChange={(e) => handleChange(index, 'category', e.target.value)}
+                      onChange={(e) => handleChange(index, 'category', e.target.value as Product['category'])}
                       style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ddd' }}
                     >
                       <option value="Modern">Modern</option>
@@ -171,7 +171,7 @@ export default function AdminDashboard() {
                   <td style={{ padding: '15px' }}>
                     <select 
                       value={product.stockStatus} 
-                      onChange={(e) => handleChange(index, 'stockStatus', e.target.value)}
+                      onChange={(e) => handleChange(index, 'stockStatus', e.target.value as Product['stockStatus'])}
                       style={{ padding: '8px', borderRadius: '6px', border: '1px solid #ddd' }}
                     >
                       <option value="In Stock">In Stock</option>

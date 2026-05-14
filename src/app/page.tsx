@@ -23,6 +23,10 @@ export default function Home() {
   // Nuevo: Estado de búsqueda
   const [searchQuery, setSearchQuery] = useState('');
 
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
   const addToCart = (product: Product, personalization?: { name: string; number: string }) => {
     setCart(prev => {
       if (personalization && (personalization.name || personalization.number)) {
@@ -201,7 +205,7 @@ export default function Home() {
            <div className="bento-grid">
               <div className="bento-card" style={{ gridColumn: 'span 1', background: '#fff' }}>
                 <div style={{ color: '#fbbf24', fontSize: '1.2rem', marginBottom: '10px' }}>★★★★★</div>
-                <p style={{ fontStyle: 'italic', marginBottom: '15px', lineHeight: '1.6' }}>"La calidad de la retro del Betis es espectacular. Tardo 2 días en llegar. Recomendadísimo."</p>
+                <p style={{ fontStyle: 'italic', marginBottom: '15px', lineHeight: '1.6' }}>&quot;La calidad de la retro del Betis es espectacular. Tardo 2 días en llegar. Recomendadísimo.&quot;</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>A</div>
                   <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Álvaro R.</span>
@@ -209,7 +213,7 @@ export default function Home() {
               </div>
               <div className="bento-card" style={{ gridColumn: 'span 1', background: '#fff' }}>
                 <div style={{ color: '#fbbf24', fontSize: '1.2rem', marginBottom: '10px' }}>★★★★★</div>
-                <p style={{ fontStyle: 'italic', marginBottom: '15px', lineHeight: '1.6' }}>"Pedí la de España personalizada y el serigrafiado está perfecto. Totalmente oficial, volveré a comprar."</p>
+                <p style={{ fontStyle: 'italic', marginBottom: '15px', lineHeight: '1.6' }}>&quot;Pedí la de España personalizada y el serigrafiado está perfecto. Totalmente oficial, volveré a comprar.&quot;</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: '#10b981', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>M</div>
                   <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>María G.</span>
